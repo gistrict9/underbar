@@ -110,8 +110,14 @@
   };
 
   // Produce a duplicate-free version of the array.
-  _.uniq = function(array) {
-
+  _.uniq = function(array, isSorted) {
+    var result = [];
+    _.filter(array, function(value, key, list) {
+      if (list.lastIndexOf(value) === key) {
+        result.push(value);
+      }
+    });
+    return result.sort();
   };
 
 

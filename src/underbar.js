@@ -178,7 +178,7 @@
       } else {
         accumulator = collection[0];
       }
-    });
+    }); 
     return accumulator;
   };
 
@@ -198,6 +198,19 @@
   // Determine whether all of the elements match a truth test.
   _.every = function(collection, iterator) {
     // TIP: Try re-using reduce() here.
+    if (collection == null) return true;
+    for (var i=0, length=collection.length; i<length; i++) {
+      if (iterator) {
+        if (!iterator(collection[i])) {
+          return false;
+        }        
+      } else {
+        if (!collection[i]) {
+          return false;
+        }
+      }
+    }
+    return true;
   };
 
   // Determine whether any of the elements pass a truth test. If no iterator is
